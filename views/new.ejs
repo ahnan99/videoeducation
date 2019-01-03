@@ -1,0 +1,49 @@
+<% include partials/header %>
+
+<h1>This is new</h1>
+<form action="/videos" method="post" enctype="multipart/form-data" onsubmit="submitstart()">
+	<input type="text" name="name" placeholder="name">
+	<input type="text" name="image" placeholder="image url">
+	<input type="file" name="video" value="点击选择上传文件" id="video">
+	<input type="submit" name="Submit" >
+
+
+	<div class="progress">
+  		<div class="progress-bar" id = 'uploadbar' role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+	</div>
+
+
+</form>
+
+
+<script type="text/javascript">
+	function submitstart(){
+			var formData = new FormData();
+			var file = document.getElementById('video').files[0];
+			formData.append('myFile', file);
+			var xhr = new XMLHttpRequest();
+			// your url upload
+			xhr.open('post', '/videos', true);
+			xhr.upload.onprogress = function(e) {
+			  if (e.lengthComputable) {
+			    var percentage = (e.loaded / e.total) * 100;
+			    $('#uploadbar').attr('style', 'width: ' + parseInt(percentage) + '%');
+			    console.log(percentage + "%");
+
+			  }
+			};
+
+			xhr.onerror = function(e) {
+			  console.log('Error');
+			  console.log(e);
+			};
+			xhr.onload = function() {
+			  console.log(this.statusText);
+			};
+			xhr.send(formData);
+	}
+
+
+</script>
+
+<% include partials/footer %>

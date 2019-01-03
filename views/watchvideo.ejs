@@ -1,0 +1,20 @@
+<% include partials/header %>
+
+
+
+<div class="container">
+
+	<div class ="row">
+		<h4 style="text-align: center">Username: <%= uploader[0].username %></h4>
+		<div class="col-md-8 col-md-offset-2">
+			
+				<video id="videoplayer" class="video-js vjs-tech vjs-16-9" controls preload="auto" poster="<%= video[0].video_img %>" data-setup='{"fluid": true}'>
+				<source src="<%= video[0].video_path %>" type="video/mp4"></source>
+				<p class="vjs-no-js">To view this video please enable JavaScript, and consider upgrading to a web browser that <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a></p>
+				</video>
+		
+	</div>
+	</div>
+</div>
+<script src="http://vjs.zencdn.net/5.20.1/video.js"></script>
+<% include partials/footer %>

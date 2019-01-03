@@ -1,0 +1,34 @@
+<% include partials/header %>
+
+
+
+<div class="container">
+	<header class="jumbotron">
+		<div class="container">
+			
+			<h1>就在这里学学学</h1>
+	
+			<p><a href="/videos/new">Add a New one!!!!!</a></p>
+		</div>
+	
+	</header>
+
+
+	<div class="row text-center" style="display: flex; flex-wrap: wrap;">
+	<% videos.forEach(function(video){ %>
+		<div class="col-md-3 col-sm-6">
+			<div class="thumbnail">
+				<img src="<%= video.video_img %>">
+				<div class="caption">
+					<h4><%= video.video_name %></h4>
+				</div>
+			
+				<p><a href="/videos/<%=video.id%>" class="btn btn-warning">好想看</a></p>
+			</div>
+		</div>
+	<% });%>
+	</div>
+</div>
+
+
+<% include partials/footer %>
